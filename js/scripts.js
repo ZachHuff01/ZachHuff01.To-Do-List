@@ -10,13 +10,22 @@ function newItem() {
          $('#list').append(li);
     }   
     //cross out item
-    li.on('dblclick', () => li.toggleClass('strike'));
+    function crossOut() {
+		li.toggleClass("strike");
+	}
+
+	li.on("dblclick", function crossOut() {
+		li.toggleClass("strike");
+	});
 
     let crossOutButton = $('<crossOutButton></crossOutButton>');
     crossOutButton.append(document.createTextNode('X'));
     li.append(crossOutButton);
     //delete item 
-    crossOutButton.on('click', () => li.addClass('delete'));
+    crossOutButton.on("click", deleteListItem);
+      function deleteListItem(){
+    		li.addClass("delete")
+    	}
     //sort item list
     $('#list').sortable();
 }
